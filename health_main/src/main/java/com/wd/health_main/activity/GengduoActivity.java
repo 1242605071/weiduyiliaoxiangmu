@@ -17,21 +17,21 @@ import com.wd.health_main.R2;
 import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.presenter.FindDepartmentPresenter;
 import com.wd.health_main.presenter.XiangqingPresenter;
+import com.wd.health_main.presenter.XiangqingPresenters;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GengduoActivity extends WDActivity {
+public class GengduoActivity extends WDActivity implements XRecyclerView.LoadingListener {
     @BindView(R2.id.xrecycler_view)
     XRecyclerView xrecyclerView;
     @BindView(R2.id.text_names)
     TextView textNames;
     private FindDepartmentPresenter findDepartmentPresenter;
-    private XiangqingPresenter xiangqingPresenter;
+    private XiangqingPresenters xiangqingPresenter;
     private InformationAdapter informationAdapter;
-    private int page = 2;
     private SharedPreferences sp;
     private int id;
     private String name;
@@ -55,35 +55,12 @@ public class GengduoActivity extends WDActivity {
 
         informationAdapter = new InformationAdapter(GengduoActivity.this);
         xrecyclerView.setAdapter(informationAdapter);
-        xiangqingPresenter = new XiangqingPresenter(new gengduo());
-        xiangqingPresenter.reqeust(id, 1, 5);
-
-        initData(page);
-
-
-        xrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        xrecyclerView.setLoadingMoreEnabled(true);
-        xrecyclerView.setPullRefreshEnabled(true);
-        xrecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                page++;
-                xrecyclerView.refreshComplete();
-                System.out.println("" + page);
-            }
-
-            @Override
-            public void onLoadMore() {
-                page--;
-                xrecyclerView.refreshComplete();
-                System.out.println("" + page);
-            }
-        });
-    }
-
-    private void initData(int page) {
+        xrecyclerView.setLoadingListener(this);
+        xiangqingPresenter = new XiangqingPresenters(new gengduo());
+        xiangqingPresenter.reqeust(id,true);
 
     }
+
 
     @Override
     protected void destoryData() {
@@ -97,22 +74,37 @@ public class GengduoActivity extends WDActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    public void onRefresh() {
+        xiangqingPresenter.reqeust(id,true);
+    }
+
+    @Override
+    public void onLoadMore() {
+        xiangqingPresenter.reqeust(id,false);
+    }
+
 
     class gengduo implements DataCall<List<XiangqingBase>> {
 
         @Override
         public void success(List<XiangqingBase> data, Object... args) {
             Log.d("aaa1", "success: " + data);
-            informationAdapter.clear();
-            informationAdapter.addAll(data);
+            xrecyclerView.refreshComplete();
+            xrecyclerView.loadMoreComplete();
+            if (xiangqingPresenter.getPage() == 1){//页面为1则为刷新
+                informationAdapter.clear();
+            }
 
+            informationAdapter.addAll(data);
             informationAdapter.notifyDataSetChanged();
 
         }
 
         @Override
         public void fail(ApiException data, Object... args) {
-
+            xrecyclerView.refreshComplete();
+            xrecyclerView.loadMoreComplete();
         }
     }
 }

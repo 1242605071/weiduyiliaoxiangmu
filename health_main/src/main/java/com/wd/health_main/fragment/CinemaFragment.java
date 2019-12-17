@@ -143,7 +143,7 @@ public class CinemaFragment extends WDFragment {
                 sp = getActivity().getSharedPreferences("xiang",Context.MODE_PRIVATE);
                 edit = sp.edit();
                 id = edit.putInt("Id", Id);
-                CinemaFragment.this.name = edit.putString("Name", "");
+                CinemaFragment.this.name = edit.putString("Name", name);
                 edit.commit();
             }
         });
