@@ -9,9 +9,15 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.wd.common.bean.DetielBean;
+import com.wd.common.core.DataCall;
 import com.wd.common.core.WDActivity;
+import com.wd.common.core.exception.ApiException;
 import com.wd.health_patient.R;
 import com.wd.health_patient.R2;
+import com.wd.health_patient.presenter.FindDoctorInfoPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,7 +79,8 @@ public class DoctorDetailsActivity extends WDActivity {
 
     @Override
     protected void initView() {
-
+        FindDoctorInfoPresenter findDoctorInfoPresenter = new FindDoctorInfoPresenter(new Find());
+        findDoctorInfoPresenter.reqeust();
     }
 
     @Override
@@ -86,5 +93,20 @@ public class DoctorDetailsActivity extends WDActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    private class Find implements DataCall <List<DetielBean>> {
+        @Override
+        public void success(List<DetielBean> data, Object... args) {
+                doctorSim.setImageURI(data.get(0).imagePic);
+                detailsName.setText(data.get(0).doctorName);
+                doctorYishi.setText(data.get(0).jobTitle);
+
+        }
+
+        @Override
+        public void fail(ApiException data, Object... args) {
+
+        }
     }
 }
