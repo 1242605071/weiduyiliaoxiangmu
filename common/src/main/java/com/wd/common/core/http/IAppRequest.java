@@ -1,5 +1,6 @@
 package com.wd.common.core.http;
 
+import com.wd.common.bean.ByqBase;
 import com.wd.common.bean.Collection;
 
 import com.wd.common.bean.DetielBean;
@@ -197,7 +198,8 @@ public interface IAppRequest {
                                                        @Query("count")int count);
 
       //查询我的被采纳的建议
-     Observable<Result<List<InteBase>>> intecaifanyijian(@Query("page")int page,@Query("count")int count);
+     @GET("user/verify/v1/findMyAdoptedCommentList")
+     Observable<Result<List<InteBase>>> intecaifanyijian(@Header("userId") int userId, @Header("sessionId") String sessionId, @Query("page")int page,@Query("count")int count);
 
 
 
@@ -254,7 +256,7 @@ public interface IAppRequest {
 
     //查询医生明细信息
     @GET("user/inquiry/v1/findDoctorInfo")
-    Observable<Result<List<DetielBean>>>findDoctorInfo(@Query("doctorId")int doctorId);
+    Observable<Result<DetielBean>>findDoctorInfo(@Query("doctorId")int doctorId);
 
 
 
@@ -269,6 +271,11 @@ public interface IAppRequest {
     //首页搜索
     @GET("share/v1/homePageSearch")
     Observable<Result<Seach>>homePageSearch(@Query("keyWord")String keyWord);
+
+
+     //查询用户收藏病友圈列表
+     @GET("user/verify/v1/findUserSickCollectionList")
+     Observable<Result<List<ByqBase>>>byq(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
 
 }
 

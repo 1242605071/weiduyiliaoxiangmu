@@ -1,6 +1,7 @@
 package com.wd.health_patient.activity;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,7 +81,9 @@ public class DoctorDetailsActivity extends WDActivity {
     @Override
     protected void initView() {
         FindDoctorInfoPresenter findDoctorInfoPresenter = new FindDoctorInfoPresenter(new Find());
-        findDoctorInfoPresenter.reqeust();
+        SharedPreferences iddo = getSharedPreferences("iddd", MODE_PRIVATE);
+        int anInt = iddo.getInt("key", 0);
+        findDoctorInfoPresenter.reqeust(anInt);
     }
 
     @Override
@@ -95,13 +98,17 @@ public class DoctorDetailsActivity extends WDActivity {
         ButterKnife.bind(this);
     }
 
-    private class Find implements DataCall <List<DetielBean>> {
+    private class Find implements DataCall <DetielBean> {
         @Override
-        public void success(List<DetielBean> data, Object... args) {
-                doctorSim.setImageURI(data.get(0).imagePic);
-                detailsName.setText(data.get(0).doctorName);
-                doctorYishi.setText(data.get(0).jobTitle);
-
+        public void success(DetielBean data, Object... args) {
+                doctorSim.setImageURI(data.imagePic);
+                detailsName.setText(data.doctorName);
+                doctorYishi.setText(data.jobTitle);
+                doctorYuan.setText(data.inauguralHospital);
+                doctorLv.setText("好评率 "+data.praise);
+                doctorShu.setText("服务患者数 "+data.serverNum);
+                jianli.setText(data.personalProfile);
+                jianl.setText(data.goodField);
         }
 
         @Override

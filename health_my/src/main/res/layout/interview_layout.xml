@@ -1,37 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
+    tools:context=".activity.HistoryActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_90"
-        android:orientation="horizontal"
-        >
+        android:layout_height="@dimen/dp_40">
         <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_icon_back_black_n"
+            android:layout_marginLeft="@dimen/dp_25"
             android:id="@+id/imager3"
-            android:layout_width="@dimen/sp_15"
-            android:layout_height="@dimen/sp_15"
-            android:background="@drawable/common_icon_back_black_n"
-            android:layout_marginTop="@dimen/dp_35"
-            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_centerVertical="true"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="咨询详情"
-            android:textSize="@dimen/sp_23"
-            android:layout_marginLeft="@dimen/dp_85"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/login_iv"
+            android:text="被采纳建议"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
             />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_6"
+        android:background="#B9B4B4"
+        android:layout_marginTop="@dimen/dp_40"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_50"
+        android:id="@+id/rll_vienna"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_message"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imagetss"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您暂时还没有建议被采纳"
+            android:id="@+id/text_add1"
+            android:layout_below="@id/imagetss"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/dp_30"
+            />
+    </RelativeLayout>
 
 
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_50"
+        android:id="@+id/rll_viennas"
+        android:visibility="gone"
+        >
 
-
-
-</LinearLayout>
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recy_view"
+            />
+    </RelativeLayout>
+</RelativeLayout>

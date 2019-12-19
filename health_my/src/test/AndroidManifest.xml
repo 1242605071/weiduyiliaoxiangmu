@@ -3,6 +3,8 @@
     package="com.example.health_my">
 
     <application>
+         <activity android:name=".activity.BingyouActivity"/>
+        <activity android:name=".activity.VideoActivity"/>
         <activity android:name=".activity.FollowActivity"></activity>
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.InterviewActivity" />

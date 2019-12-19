@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="#CFCFCF"
+    android:fitsSystemWindows="true"
     tools:context=".activity.SearchActivity">
     <RelativeLayout
         android:background="#ffffff"

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.FollowActivity">
+    tools:context=".activity.FileActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40">
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/login_iv"
-            android:text="我的关注"
+            android:text="我的病友圈"
             android:layout_centerVertical="true"
             android:textSize="20sp"
             />
@@ -33,44 +33,54 @@
         android:background="#B9B4B4"
         android:layout_marginTop="@dimen/dp_40"
         />
-
     <RelativeLayout
-        android:id="@+id/rll_vienna"
+        android:layout_marginTop="@dimen/dp_50"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dp_50">
-
+        android:id="@+id/re_add"
+        >
         <ImageView
-            android:id="@+id/imagetss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:background="@drawable/no_message"
             android:layout_centerVertical="true"
-            android:src="@drawable/no_message" />
-
+            android:layout_centerHorizontal="true"
+            />
         <TextView
-            android:id="@+id/text_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imagetss"
+            android:text="您还没有发布过病友圈"
+            android:id="@+id/text_tv"
+            android:layout_marginTop="@dimen/dp_355"
+             android:layout_marginLeft="@dimen/dp_130"
+            />
+        <TextView
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_35"
+            android:background="@drawable/translucent1"
+            android:text="来发布"
+            android:id="@+id/text_add"
+            android:textSize="18sp"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/dp_30"
-            android:text="您暂无任何关注的信息" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_60"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dp_50"
-        android:id="@+id/rll_viennas"
+        android:id="@+id/re_bing"
         android:visibility="gone"
         >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/follow_rlv"
-            />
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/re_view"/>
+
+
     </RelativeLayout>
 </RelativeLayout>
