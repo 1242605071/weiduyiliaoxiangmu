@@ -105,7 +105,7 @@ public class InquiryActivity extends WDActivity {
         moneyPresenter = new MoneyPresenter(new MoneyPresen());
         //医生列表
         findDoctorListPresenter = new FindDoctorListPresenter(new Doctor());
-        findDoctorListPresenter.reqeust(2, 4, 1, 1, 5);
+        findDoctorListPresenter.reqeust(2, 4, 1, 1, 10);
     }
 
     @Override
@@ -124,13 +124,13 @@ public class InquiryActivity extends WDActivity {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.tv_zh) {
-            findDoctorListPresenter.reqeust(idddd, 1, 1, 1, 5);
+            findDoctorListPresenter.reqeust(idddd, 1, 1, 1, 10);
         } else if (id == R.id.tv_hp) {
-            findDoctorListPresenter.reqeust(idddd, 2, 1, 1, 5);
+            findDoctorListPresenter.reqeust(idddd, 2, 1, 1, 10);
         } else if (id == R.id.tv_zxs) {
-            findDoctorListPresenter.reqeust(idddd, 3, 1, 1, 5);
+            findDoctorListPresenter.reqeust(idddd, 3, 1, 1, 10);
         } else if (id == R.id.tv_price) {
-            findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 5);
+            findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 10);
         } else if (id == R.id.tv_ask) {
 
             moneyPresenter.reqeust(idd, sessionId);
@@ -189,7 +189,7 @@ public class InquiryActivity extends WDActivity {
                     wellreceived.getIndex(myposition);
                     wellreceived.notifyDataSetChanged();
                     idddd = id;
-                    findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 5);
+                    findDoctorListPresenter.reqeust(idddd, 4, 1, 1, 10);
                 }
             });
             inquiryRv.setAdapter(wellreceived);
@@ -203,7 +203,11 @@ public class InquiryActivity extends WDActivity {
 
     private class Doctor implements DataCall<List<DoctorBean>> {
         @Override
-        public void success(List<DoctorBean> result, Object... args) {
+        public void success(final List<DoctorBean> result, Object... args) {
+            SharedPreferences iddd = getSharedPreferences("iddd", MODE_PRIVATE);
+            final SharedPreferences.Editor edit = iddd.edit();
+            edit.putInt("key",result.get(0).doctorId);
+            edit.commit();
             sdvPic.setImageURI(result.get(0).imagePic);
             tvName.setText(result.get(0).doctorName);
             tvInauguralHospital.setText(result.get(0).inauguralHospital);
@@ -217,7 +221,9 @@ public class InquiryActivity extends WDActivity {
             inquiryAdapter = new InquiryAdapter(R.layout.inquiry_item, result);
             inquiryAdapter.setDoctor(new InquiryAdapter.Doctor() {
                 @Override
-                public void sad(Uri image, String name, int myposition, String inauguralHospital, String jobTitle, String praise, int serverNum, int servicePrice) {
+                public void sad(Uri image, String name, int myposition, String inauguralHospital, String jobTitle, String praise, int serverNum, int servicePrice,int idddd) {
+                    edit.putInt("key",idddd);
+                    edit.commit();
                     sdvPic.setImageURI(image);
                     tvName.setText(name);
                     inquiryAdapter.getIndex(myposition);

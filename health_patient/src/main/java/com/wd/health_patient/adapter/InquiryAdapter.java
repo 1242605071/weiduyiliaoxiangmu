@@ -45,6 +45,7 @@ public class InquiryAdapter extends BaseQuickAdapter<DoctorBean, BaseViewHolder>
         final String praise = item.praise;
         final int serverNum = item.serverNum;
         final int servicePrice = item.servicePrice;
+        final int idddd = item.doctorId;
         if (position==myposition){
             textView.setVisibility(View.GONE);
             bule.setVisibility(View.VISIBLE);
@@ -55,7 +56,7 @@ public class InquiryAdapter extends BaseQuickAdapter<DoctorBean, BaseViewHolder>
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doctor.sad(image,name,position,inauguralHospital,jobTitle,praise,serverNum,servicePrice);
+                doctor.sad(image,name,position,inauguralHospital,jobTitle,praise,serverNum,servicePrice,idddd);
             }
         });
     }
@@ -65,6 +66,6 @@ public class InquiryAdapter extends BaseQuickAdapter<DoctorBean, BaseViewHolder>
         this.doctor = doctor;
     }
     public interface Doctor{
-        void sad(Uri image,String name,int myposition,String inauguralHospital,String jobTitle,String praise,int serverNum,int servicePrice);
+        void sad(Uri image,String name,int myposition,String inauguralHospital,String jobTitle,String praise,int serverNum,int servicePrice,int idddd);
     }
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".activity.CommonActivity">
+    tools:context=".activity.CommonActivity"
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:layout_width="wrap_content"

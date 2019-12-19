@@ -254,7 +254,7 @@ public interface IAppRequest {
 
     //查询医生明细信息
     @GET("user/inquiry/v1/findDoctorInfo")
-    Observable<Result<List<DetielBean>>>findDoctorInfo(@Query("doctorId")int doctorId);
+    Observable<Result<DetielBean>>findDoctorInfo(@Query("doctorId")int doctorId);
 
 
 
