@@ -106,15 +106,11 @@ public class HomeActivity extends WDActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick({R2.id.home_lin, R2.id.movie_lin, R2.id.sick_lin,R2.id.comments_img})
     public void onViewClicked(View view) {
+
 
         int id = view.getId();
         if (id == R.id.home_lin) {
@@ -167,9 +163,7 @@ public class HomeActivity extends WDActivity {
     //对返回键进行监听
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-
             exit();
             return true;
         }

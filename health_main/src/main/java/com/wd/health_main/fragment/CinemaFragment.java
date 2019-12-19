@@ -29,6 +29,7 @@ import com.wd.health_main.R2;
 import com.wd.health_main.activity.DeiserActivity;
 import com.wd.health_main.activity.GengduoActivity;
 import com.wd.health_main.activity.SousuoActivity;
+import com.wd.health_main.activity.WebActivity;
 import com.wd.health_main.adapter.DepartmentAdapter;
 import com.wd.health_main.adapter.InformationAdapter;
 import com.wd.health_main.adapter.MyXiangqingadapter;
@@ -143,7 +144,7 @@ public class CinemaFragment extends WDFragment {
                 sp = getActivity().getSharedPreferences("xiang",Context.MODE_PRIVATE);
                 edit = sp.edit();
                 id = edit.putInt("Id", Id);
-                CinemaFragment.this.name = edit.putString("Name", "");
+                CinemaFragment.this.name = edit.putString("Name", name);
                 edit.commit();
             }
         });
@@ -173,7 +174,12 @@ public class CinemaFragment extends WDFragment {
 //        recyView1.setLayoutManager(linearLayoutManager1);
 //           recyView1.setAdapter(myXiangqingadapter);
 
-
+      showImage.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+                 intentByRouter(Constant.ACTIVITY_URL_Web);
+          }
+      });
         //常见病症
 
         showDrugs.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +200,12 @@ public class CinemaFragment extends WDFragment {
 
             }
         });
+        showImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               intent(WebActivity.class);
+            }
+        });
     }
 
     @Override
@@ -208,6 +220,7 @@ public class CinemaFragment extends WDFragment {
         startActivity(intent);
 
     }
+
 
 
 
