@@ -53,6 +53,8 @@ public class MyActivity extends WDActivity {
     LinearLayout textSetup;
     @BindView(R2.id.text_follow)
     LinearLayout textFollow;
+    @BindView(R2.id.text_task)
+    LinearLayout textTask;
     private SharedPreferences sp;
     private String headPic;
     private String userName;
@@ -143,6 +145,12 @@ public class MyActivity extends WDActivity {
             @Override
             public void onClick(View v) {
                 intent(FollowActivity.class);
+            }
+        });
+        textTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent(TackActivity.class);
             }
         });
     }

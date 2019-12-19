@@ -81,7 +81,7 @@ public class Bingzhengfragment extends WDFragment {
 
             @Override
             public void gg(int id, String name) {
-                 intentByRouter(Constant.ACTIVITY_URL_Com);
+                intent(CommonActivity.class);
                 sp = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
                 edit = sp.edit();
                 edit.putInt("Id",id);

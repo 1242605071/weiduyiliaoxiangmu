@@ -1,14 +1,18 @@
 package com.example.health_my.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.health_my.R;
 import com.example.health_my.R2;
 import com.wd.common.core.WDActivity;
+import com.wd.health_main.activity.HomeActivity;
+import com.wd.health_main.activity.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +23,8 @@ public class SetUpActivity extends WDActivity {
 
     @BindView(R2.id.set_up_activity_btn_quit_landing)
     Button setUpActivityBtnQuitLanding;
+    @BindView(R2.id.set_up_activity_relative_my_message)
+    RelativeLayout setUpActivityRelativeMyMessage;
 
     @Override
     protected int getLayoutId() {
@@ -27,7 +33,7 @@ public class SetUpActivity extends WDActivity {
 
     @Override
     protected void initView() {
-
+        intent(MineActivity.class);
     }
 
     @Override
@@ -44,12 +50,12 @@ public class SetUpActivity extends WDActivity {
 
     @OnClick(R2.id.set_up_activity_btn_quit_landing)
     public void onViewClicked() {
-        SharedPreferences sp=getSharedPreferences("login",MODE_PRIVATE);
-        if(sp!=null){
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+        if (sp != null) {
             sp.edit().clear().commit();
             Toast.makeText(SetUpActivity.this, "退出登录成功", Toast.LENGTH_LONG).show();
         }
-        Intent logoutIntent = new Intent(SetUpActivity.this, MyActivity.class);
+        Intent logoutIntent = new Intent(SetUpActivity.this, HomeActivity.class);
         logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logoutIntent);
 

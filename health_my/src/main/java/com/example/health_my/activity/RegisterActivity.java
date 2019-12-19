@@ -81,7 +81,7 @@ public class RegisterActivity extends WDActivity {
                 String key = RsaCoder.encryptByPublicKey(pwd1);
                 //   String pwdss = RsaCoder.encryptByPublicKey(pwd1);
 
-                registerPresenter.reqeust(email,verify,pwds,key);
+                registerPresenter.reqeust(email,verify,pwds,pwds);
             }
         });
     }

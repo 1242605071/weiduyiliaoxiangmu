@@ -45,7 +45,7 @@ public class DrugsActivity extends WDActivity {
         list.add(new Bingzhengfragment());
         list.add(new Yaopinfragment());
 
-               listtab.add("常见病症");
+                listtab.add("常见病症");
                 listtab.add("常用药品");
 
 

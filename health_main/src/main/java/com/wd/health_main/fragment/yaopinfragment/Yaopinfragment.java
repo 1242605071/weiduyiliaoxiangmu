@@ -14,6 +14,7 @@ import com.wd.common.core.exception.ApiException;
 import com.wd.common.util.Constant;
 import com.wd.health_main.R;
 import com.wd.health_main.R2;
+import com.wd.health_main.activity.CommonActivity;
 import com.wd.health_main.activity.InsertActivity;
 import com.wd.health_main.adapter.MyDrougadapter;
 import com.wd.health_main.adapter.MyYaoadapter;
@@ -80,7 +81,7 @@ public class Yaopinfragment extends WDFragment {
         myYaoadapter.setJing(new MyYaoadapter.Jing() {
             @Override
             public void gg(int id, String name) {
-                intentByRouter(Constant.ACTIVITY_URL_Coms);
+                intent(InsertActivity.class);
                 sp = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
                 edit = sp.edit();
                 edit.putInt("Ids",id);
