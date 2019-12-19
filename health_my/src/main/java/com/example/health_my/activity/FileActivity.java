@@ -37,11 +37,11 @@ public class FileActivity extends WDActivity {
             }
         });
     }
+
     @Override
     protected void destoryData() {
 
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

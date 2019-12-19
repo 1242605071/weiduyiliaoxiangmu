@@ -13,7 +13,7 @@ public class KntePresenter extends WDPresenter<IAppRequest> {
 
     @Override
     protected Observable getModel(Object... args) {
-        return iRequest.intecaifanyijian((int)args[0],(int)args[1]);
+        return null;
 
     }
 }

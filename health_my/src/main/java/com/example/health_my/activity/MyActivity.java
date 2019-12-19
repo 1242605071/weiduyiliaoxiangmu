@@ -53,6 +53,10 @@ public class MyActivity extends WDActivity {
     LinearLayout textSetup;
     @BindView(R2.id.text_follow)
     LinearLayout textFollow;
+    @BindView(R2.id.video)
+    ImageView video;
+    @BindView(R2.id.beng)
+    ImageView beng;
     private SharedPreferences sp;
     private String headPic;
     private String userName;
@@ -143,8 +147,29 @@ public class MyActivity extends WDActivity {
             @Override
             public void onClick(View v) {
                 intent(FollowActivity.class);
+
             }
         });
+        video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                intent(VideoActivity.class);
+
+
+            }
+
+        });
+        beng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     intent(BingyouActivity.class);
+
+
+            }
+        });
+
+
     }
 
     @Override

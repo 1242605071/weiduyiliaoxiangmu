@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/black_a10_color"
+            />
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dp_150"
+              android:layout_marginTop="@dimen/dp_20"
+          android:orientation="vertical"
+          >
+           <com.facebook.drawee.view.SimpleDraweeView
+               android:layout_width="@dimen/dp_50"
+               android:layout_height="@dimen/dp_50"
+               android:layout_marginLeft="@dimen/dp_20"
+               android:layout_marginTop="@dimen/dp_20"
+               android:id="@+id/dv"
+               />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="_______"
+
+                     android:layout_marginTop="@dimen/dp_100"
+                     android:layout_marginLeft="@dimen/dp_30"
+                      android:id="@+id/zhangsan"
+                     />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                         android:layout_marginLeft="@dimen/dp_100"
+                      android:layout_marginTop="@dimen/dp_20"
+                      android:text="_______"
+                      android:textSize="@dimen/sp_14"
+                      android:id="@+id/mingzi"
+                      />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/dp_100"
+              android:layout_marginTop="@dimen/dp_45"
+              android:text="_______"
+              android:textSize="@dimen/sp_12"
+              android:id="@+id/bingzi"
+
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/dp_100"
+              android:layout_marginTop="@dimen/dp_70"
+              android:text="_______"
+              android:textSize="@dimen/sp_12"
+              android:id="@+id/shijian"
+              />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="-------v-----------------------------------------------------------------------------------"
+                     android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_120"
+                   />
+
+
+
+
+      </RelativeLayout>
+
+
+</LinearLayout>
