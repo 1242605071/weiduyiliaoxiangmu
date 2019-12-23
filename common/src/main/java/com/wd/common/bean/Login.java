@@ -18,6 +18,7 @@ public class Login {
 //    invitationCode	RTTNASJBQI	邀请码
 
     public String sessionId;
+    public String jiGuangPwd;
     public String nickName;
     public String userName;
     public String headPic;

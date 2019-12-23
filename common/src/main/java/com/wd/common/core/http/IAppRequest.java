@@ -277,6 +277,11 @@ public interface IAppRequest {
      @GET("user/verify/v1/findUserSickCollectionList")
      Observable<Result<List<ByqBase>>>byq(@Header("userId")int userId, @Header("sessionId")String sessionId,@Query("page")int page,@Query("count")int count);
 
+
+     //修改用户性别
+    @FormUrlEncoded
+    @PUT("user/verify/v1/updateUserSex")
+    Observable<Result>updateUserSex(@Header("userId")int userId, @Header("sessionId")String sessionId,@Field("sex")int sex);
 }
 
 

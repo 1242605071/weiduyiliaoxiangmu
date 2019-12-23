@@ -114,6 +114,9 @@ public class LoginActivity extends WDActivity {
         edit.putString("pwd", pwd);
         edit.commit();
         String pwds = RsaCoder.encryptByPublicKey(pwd);
+        edit.putString("pwds",pwds);
+        edit.putString("email",email);
+        edit.commit();
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pwds)) {
             Toast.makeText(LoginActivity.this, "你的输入为空", Toast.LENGTH_SHORT).show();
         }
@@ -127,8 +130,16 @@ public class LoginActivity extends WDActivity {
             Toast.makeText(LoginActivity.this, "登录成功!!", Toast.LENGTH_SHORT).show();
             edit.putString("nickName", data.nickName);
             edit.putString("email", data.email);
+            edit.putInt("sex",data.sex);
             edit.putString("headPic", data.headPic);
             edit.putInt("age", data.age);
+            String jiGuangPwd = data.jiGuangPwd;
+            try {
+                String decrypt = RsaCoder.decryptByPublicKey(jiGuangPwd);
+                edit.putString("decrypt",decrypt);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             edit.putInt("height", data.height);
             edit.putInt("weight", data.weight);
             edit.putString("userName", data.userName);
